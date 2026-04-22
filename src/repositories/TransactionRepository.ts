@@ -16,7 +16,7 @@ export class TransactionRepository {
   async findAll() {
   return await prisma.transaction.findMany({
     orderBy: {
-      createdAt: 'desc' // Mostra as mais recentes primeiro
+      createdAt: 'desc'
     }
   });
 }

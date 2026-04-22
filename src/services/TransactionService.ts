@@ -1,14 +1,13 @@
 import { TransactionRepository } from '../repositories/TransactionRepository';
-import { LogService } from './LogService'; // Importe o novo service
+import { LogService } from './LogService';
 
 export class TransactionService {
   private repository = new TransactionRepository();
-  private logService = new LogService(); // Instancie o log
+  private logService = new LogService();
 
   async execute(data: { description: string, amount: number, type: string, category: string }) {
     
     if (data.amount <= 0) {
-      // REGISTRO NO MONGO ANTES DE DAR O ERRO
       await this.logService.saveError('CREATE_TRANSACTION', {
         message: 'Tentativa de valor negativo ou zero',
         data_received: data
