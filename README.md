@@ -45,11 +45,11 @@ A API estará rodando em http://localhost:3333
 
 
 📡 Endpoints DisponíveisMétodoRotaDescrição
-GET     /health               Verifica a saúde da API e dos Bancos.
-POST    /transactions         Cria uma transação financeira (Salva no Postgres).
-GET     /transactions         Lista todas as transações (Busca no Postgres).
-GET     /logs                 Retorna o histórico de erros (Busca no MongoDB).
-GET     /logs/report          Relatório de erros agrupados (Aggregation MongoDB).
+- GET /health - Verifica a saúde da API e dos Bancos.
+- POST /transactions - Cria uma transação financeira (Salva no Postgres).
+- GET /transactions - Lista todas as transações (Busca no Postgres).
+- GET /logs - Retorna o histórico de erros (Busca no MongoDB).
+- GET /logs/report - Relatório de erros agrupados (Aggregation MongoDB).
 
 
 🧠 Decisões de Engenharia & Troubleshooting
