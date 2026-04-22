@@ -1,11 +1,19 @@
 import { TransactionRepository } from '../repositories/TransactionRepository';
+import { LogService } from './LogService'; // Importe o novo service
 
 export class TransactionService {
   private repository = new TransactionRepository();
+  private logService = new LogService(); // Instancie o log
 
   async execute(data: { description: string, amount: number, type: string, category: string }) {
-    // Exemplo de Troubleshooting/Validação:
+    
     if (data.amount <= 0) {
+      // REGISTRO NO MONGO ANTES DE DAR O ERRO
+      await this.logService.saveError('CREATE_TRANSACTION', {
+        message: 'Tentativa de valor negativo ou zero',
+        data_received: data
+      });
+
       throw new Error("O valor da transação deve ser maior que zero.");
     }
 
@@ -13,7 +21,6 @@ export class TransactionService {
   }
 
   async listAll() {
-  return await this.repository.findAll();
+    return await this.repository.findAll();
   }
-
 }
